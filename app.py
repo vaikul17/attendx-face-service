@@ -39,6 +39,10 @@ def is_frame_blurry(gray_face) -> bool:
     variance = cv2.Laplacian(gray_face, cv2.CV_64F).var()
     return variance < 80.0
 
+@app.get("/")
+def read_root():
+    return {"status": "healthy"}
+
 @app.post("/embed")
 async def generate_embedding(image: UploadFile = File(...)):
     """
