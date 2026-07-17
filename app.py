@@ -191,8 +191,10 @@ async def match_face(
                     best_score = similarity
                     best_idx = idx
 
-            # SFace Cosine similarity matching threshold is 0.363
-            SFACE_THRESHOLD = 0.363
+            # Tighten Cosine similarity threshold to 0.60 to prevent false-positives (siblings/similar faces)
+            SFACE_THRESHOLD = 0.60
+            print(f"[AI MATCH] Best Cosine Similarity: {best_score:.4f} for employee ID: {employee_ids[best_idx]} (Threshold: {SFACE_THRESHOLD})")
+            
             if best_score > SFACE_THRESHOLD:
                 # Normalize confidence to a realistic 88-99% range
                 conf_pct = ((best_score - SFACE_THRESHOLD) / (1.0 - SFACE_THRESHOLD)) * 100
