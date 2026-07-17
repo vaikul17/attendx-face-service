@@ -32,14 +32,14 @@ SFACE_MODEL = "face_recognition_sface_2021dec.onnx"
 if not os.path.exists(YUNET_MODEL):
     try:
         print("[INFO] Downloading YuNet ONNX face detector...")
-        urllib.request.urlretrieve("https://github.com/opencv/opencv_zoo/raw/master/models/face_detection_yunet/face_detection_yunet_2023mar.onnx", YUNET_MODEL)
+        urllib.request.urlretrieve("https://github.com/opencv/opencv_zoo/raw/main/models/face_detection_yunet/face_detection_yunet_2023mar.onnx", YUNET_MODEL)
     except Exception as e:
         print(f"[WARNING] YuNet download failed: {e}")
 
 if not os.path.exists(SFACE_MODEL):
     try:
         print("[INFO] Downloading SFace ONNX face recognizer...")
-        urllib.request.urlretrieve("https://github.com/opencv/opencv_zoo/raw/master/models/face_recognition_sface/face_recognition_sface_2021dec.onnx", SFACE_MODEL)
+        urllib.request.urlretrieve("https://huggingface.co/opencv/opencv_zoo/resolve/main/models/face_recognition_sface/face_recognition_sface_2021dec.onnx", SFACE_MODEL)
     except Exception as e:
         print(f"[WARNING] SFace download failed: {e}")
 
