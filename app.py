@@ -67,8 +67,10 @@ except ImportError:
 
 # Simple passive liveness check helper
 def is_frame_blurry(gray_face) -> bool:
+    if gray_face is None or gray_face.size == 0:
+        return True
     variance = cv2.Laplacian(gray_face, cv2.CV_64F).var()
-    return variance < 80.0
+    return variance < 35.0
 
 @app.get("/")
 def read_root():
